@@ -14,14 +14,14 @@
 
 @implementation ViewController
 {
-    NSArray *recipes;
+    NSMutableArray *recipes;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     // Initialize table data
-    recipes = @[@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", @"Ham and Egg Sandwich", @"Creme Brelee", @"White Chocolate Donut", @"Starbucks Coffee", @"Vegetable Curry", @"Instant Noodle with Egg", @"Noodle with BBQ Pork", @"Japanese Noodle with Pork", @"Green Tea", @"Thai Shrimp Cake", @"Angry Birds Cake", @"Ham and Cheese Panini"];
+    recipes = [NSMutableArray arrayWithObjects: @"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", @"Ham and Egg Sandwich", @"Creme Brelee", @"White Chocolate Donut", @"Starbucks Coffee", @"Vegetable Curry", @"Instant Noodle with Egg", @"Noodle with BBQ Pork", @"Japanese Noodle with Pork", @"Green Tea", @"Thai Shrimp Cake", @"Angry Birds Cake", @"Ham and Cheese Panini", nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,8 +46,14 @@
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-
     // Even while this method is empty, it show the delete button when you swipe a row.
+    
+    // Remove Row from the array through indexPath.row
+    [recipes removeObjectAtIndex:indexPath.row];
+    
+    // Request Table View to reload
+    [tableView reloadData];
+    
 }
 
 @end

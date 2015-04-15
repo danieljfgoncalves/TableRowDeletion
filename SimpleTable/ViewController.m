@@ -52,7 +52,8 @@
     [recipes removeObjectAtIndex:indexPath.row];
     
     // Request Table View to reload
-    [tableView reloadData];
+    // Better way than: [tableView reloadData];
+    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     
 }
 

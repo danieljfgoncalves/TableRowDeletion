@@ -45,4 +45,9 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    // Even while this method is empty, it show the delete button when you swipe a row.
+}
+
 @end
